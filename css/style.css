@@ -1,97 +1,225 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,900&display=swap');
-*{
-    font-family: 'Poppins',cursive;
-}
-body{
-    color: azure;
-    width: 100%;
-    height: 82vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-    /* padding-top: -30; */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,800;0,900;1,900&display=swap");
+
+:root {
+  --bg: #050508;
+  --text: rgba(255, 255, 255, 0.94);
+  --text-muted: rgba(255, 255, 255, 0.78);
+  --glow: #39c6d6;
+  --btn: #0a2be9;
+  --btn-hover: #1e45ff;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-x: env(safe-area-inset-left, 0px);
 }
 
-.botones{
-    padding: 9px;
-    border-radius: 80px;
-    background-color: transparent;
-    border: none;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.botones a{
-    background-color: #0a2be9;
-    padding: 9px;
-    border-radius: 80px;
-    -webkit-border-radius: 80px;
-    -moz-border-radius: 80px;
-    -ms-border-radius: 80px;
-    -o-border-radius: 80px;
-
+* {
+  font-family: "Poppins", system-ui, sans-serif;
 }
 
-.botones a:focus{
-    background-color: rgb(50, 194, 194);
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
-.greetings{
-    font-size: 7rem;
-    font-weight: 900;
-}
-.greetings > span{
-    animation: glow 2.5s ease-in-out infinite;
-}
-@keyframes glow{
-    0%, 100%{
-        color: #fff;
-        text-shadow: 0 0 12px #39c6d6, 0 0 50px #39c6d6, 0 0 100px #39c6d6;
-    }
-    10%, 90%{
-        color: #111;
-        text-shadow: none;
-    }
-}
-.greetings > span:nth-child(2){
-    animation-delay: .2s ;
-}
-.greetings > span:nth-child(3){
-    animation-delay: .4s ;
-}
-.greetings > span:nth-child(4){
-    animation-delay: .6s;
-}
-.greetings > span:nth-child(5){
-    animation-delay: .8s;
-}
-.greetings > span:nth-child(6){
-    animation-delay: 1s;
+body {
+  margin: 0;
+  color: var(--text);
+  min-height: 100dvh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0;
+  padding: calc(var(--safe-top) + 1.25rem) calc(var(--safe-x) + 1.25rem) 0;
+  background: radial-gradient(
+      ellipse 120% 80% at 50% -20%,
+      rgba(57, 198, 214, 0.12),
+      transparent 50%
+    ),
+    var(--bg);
+  text-rendering: optimizeLegibility;
 }
 
-.description{
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+.landing-main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.25rem, 4vw, 2rem);
+  width: 100%;
+  min-height: 0;
+  padding-bottom: 1rem;
 }
 
-.button a{
-    text-decoration: none;
-    font-size: 1rem;
-    color: #111;
+.landing-footer {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 22rem;
+  margin: 0 auto;
+  padding: 1rem 0.25rem calc(var(--safe-bottom) + 1.15rem);
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-@media screen and (max-width:574px){
-    .greetings{
-        display: block;
-        font-size: 4rem;
-        font-weight: 800;
-        text-align: center;
-    }
-    .description{
-        font-size: 2rem;
-    }
-    
-    .button a{
-        font-size: 1rem;
-    }
+.landing-footer__line {
+  margin: 0;
+  font-size: clamp(0.78rem, 2.6vw, 0.9rem);
+  font-weight: 500;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.62);
+  letter-spacing: 0.02em;
+}
+
+.landing-footer__line + .landing-footer__line {
+  margin-top: 0.35rem;
+}
+
+/* Saudação — brilho legível (antes ficava quase preto a maior parte do tempo) */
+.greetings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  row-gap: 0.15em;
+  max-width: min(92vw, 38rem);
+  margin: 0 auto;
+  font-size: clamp(1.65rem, 5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.greetings > span {
+  display: inline-block;
+  animation: glow 2.4s ease-in-out infinite;
+  will-change: color, text-shadow;
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    color: #fff;
+    text-shadow: 0 0 16px rgba(57, 198, 214, 0.95), 0 0 36px rgba(57, 198, 214, 0.45),
+      0 0 56px rgba(57, 198, 214, 0.2);
+  }
+  50% {
+    color: #eafcff;
+    text-shadow: 0 0 10px rgba(57, 198, 214, 0.55), 0 0 22px rgba(57, 198, 214, 0.25);
+  }
+}
+
+.description {
+  width: 100%;
+  max-width: 22rem;
+  margin: 0 auto;
+  padding: 0 0.25rem;
+  font-size: clamp(0.75rem, 2.2vw, 1.05rem);
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.description span {
+  display: inline-block;
+}
+
+.button {
+  width: 100%;
+  max-width: 18rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.55rem;
+}
+
+.botones {
+  width: 100%;
+  padding: 0;
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.botones a {
+  display: block;
+  width: 100%;
+  padding: 0.95rem 1.5rem;
+  border-radius: 999px;
+  background: linear-gradient(165deg, var(--btn) 0%, #0820b5 100%);
+  color: #fff !important;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 0 4px 20px rgba(10, 43, 233, 0.45), 0 1px 0 rgba(255, 255, 255, 0.12) inset;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  touch-action: manipulation;
+  min-height: 48px;
+  line-height: 1.3;
+}
+
+.botones a:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 6px 28px rgba(10, 43, 233, 0.55);
+}
+
+.botones a:active {
+  transform: scale(0.98);
+}
+
+.botones a:focus-visible {
+  outline: 2px solid var(--glow);
+  outline-offset: 3px;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    padding-left: max(1rem, var(--safe-x));
+    padding-right: max(1rem, var(--safe-x));
+  }
+
+  .landing-main {
+    gap: 1.35rem;
+  }
+
+  .greetings {
+    font-size: clamp(1.4rem, 6.2vw, 1.85rem);
+    max-width: 19rem;
+    line-height: 1.22;
+  }
+
+  .description {
+    max-width: 19.5rem;
+    font-size: clamp(0.9rem, 3.8vw, 1.05rem);
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+
+  .button {
+    max-width: 17.5rem;
+  }
+
+  .botones a {
+    font-size: 0.74rem;
+    padding: 1rem 1.25rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  .description {
+    max-width: 26rem;
+  }
 }

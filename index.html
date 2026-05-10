@@ -1,32 +1,48 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#050508">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/flowers.png" type="image/x-icon">
-    <title>Flowers</title>
+    <title>Flores</title>
 </head>
 
 <body>
-    <div class="greetings">
-        <span>H</span>
-        <span>o</span>
-        <span>l</span>
-        <span>a</span>
-        <span>!</span>
-    </div>
-    <div class="description">
-        <span>ESTE DETALLE ES PARA TI :)</span>
-    </div>
-    <div class="button">
+    <main class="landing-main">
+      <div class="greetings" id="greetings"></div>
+      <script>
+        (function () {
+          var texto = "oi amor da minha vida!";
+          var el = document.getElementById("greetings");
+          el.innerHTML = texto
+            .split("")
+            .map(function (ch, i) {
+              var c = ch === " " ? "\u00A0" : ch;
+              return (
+                '<span style="animation-delay:' + i * 0.15 + 's">' + c + "</span>"
+              );
+            })
+            .join("");
+        })();
+      </script>
+      <div class="description">
+        <span>Esse é um presentinho eterno e que você pode visualizar quantas vezes quiser!</span>
+      </div>
+      <div class="button">
         <button class="botones">
-            <a href="flower.html" style="color: #fff;">CLICK AQUÍ</a>
+          <a href="flower.html">CLICK AQUI PARA VER</a>
         </button>
-    </div>
+      </div>
+    </main>
 
+    <footer class="landing-footer">
+      <p class="landing-footer__line">Para: a minha princesa</p>
+      <p class="landing-footer__line">De: o seu amorzinho</p>
+    </footer>
 </body>
 
 </html>
